@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>For AR</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Find coins</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Find coins</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

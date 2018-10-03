@@ -7,21 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC21972FCB978738C92495D4 /* Pods_ARHunter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */; };
+		F6B0E3F92165022800B70093 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0E3F82165022800B70093 /* Keys.swift */; };
 		F6F82F56216207C400A9CF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F55216207C400A9CF92 /* AppDelegate.swift */; };
-		F6F82F58216207C400A9CF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F57216207C400A9CF92 /* ViewController.swift */; };
 		F6F82F5B216207C400A9CF92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F59216207C400A9CF92 /* Main.storyboard */; };
 		F6F82F5D216207C500A9CF92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F5C216207C500A9CF92 /* Assets.xcassets */; };
 		F6F82F60216207C500A9CF92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F5E216207C500A9CF92 /* LaunchScreen.storyboard */; };
+		F6F82F69216208B600A9CF92 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F68216208B600A9CF92 /* MapViewController.swift */; };
+		F6F82F702162097600A9CF92 /* ARItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F6E2162097600A9CF92 /* ARItem.swift */; };
+		F6F82F74216209A500A9CF92 /* MapKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F73216209A500A9CF92 /* MapKitUtils.swift */; };
+		F6F82F7A21620CCA00A9CF92 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F7921620CCA00A9CF92 /* ARViewController.swift */; };
+		F6F82F7C21620E5700A9CF92 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F7B21620E5700A9CF92 /* MapPresenter.swift */; };
+		F6F82F7E21620E6400A9CF92 /* ARPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F7D21620E6400A9CF92 /* ARPresenter.swift */; };
+		F6FE0D9321651C1F00B7B0D8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F6FE0D9221651C1F00B7B0D8 /* art.scnassets */; };
+		F6FE0D9521651CFB00B7B0D8 /* ARMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE0D9421651CFB00B7B0D8 /* ARMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37A0F80E2AE2C456D37AB34B /* Pods-ARHunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHunter.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter.release.xcconfig"; sourceTree = "<group>"; };
+		6240ECA82C0CCC0315A80BBB /* Pods-ARHunter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHunter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter.debug.xcconfig"; sourceTree = "<group>"; };
+		D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARHunter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B0E3F82165022800B70093 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F6F82F52216207C400A9CF92 /* ARHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F82F55216207C400A9CF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6F82F57216207C400A9CF92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F6F82F5A216207C400A9CF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6F82F5C216207C500A9CF92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6F82F5F216207C500A9CF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6F82F61216207C500A9CF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6F82F68216208B600A9CF92 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F6F82F6E2162097600A9CF92 /* ARItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARItem.swift; sourceTree = "<group>"; };
+		F6F82F73216209A500A9CF92 /* MapKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitUtils.swift; sourceTree = "<group>"; };
+		F6F82F7921620CCA00A9CF92 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		F6F82F7B21620E5700A9CF92 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		F6F82F7D21620E6400A9CF92 /* ARPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPresenter.swift; sourceTree = "<group>"; };
+		F6FE0D9221651C1F00B7B0D8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		F6FE0D9421651CFB00B7B0D8 /* ARMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC21972FCB978738C92495D4 /* Pods_ARHunter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B20D31AEF47E391822E58FB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6240ECA82C0CCC0315A80BBB /* Pods-ARHunter.debug.xcconfig */,
+				37A0F80E2AE2C456D37AB34B /* Pods-ARHunter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DBE8204A25DA4B19A73BFF04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F6F82F49216207C400A9CF92 = {
 			isa = PBXGroup;
 			children = (
 				F6F82F54216207C400A9CF92 /* ARHunter */,
 				F6F82F53216207C400A9CF92 /* Products */,
+				B20D31AEF47E391822E58FB8 /* Pods */,
+				DBE8204A25DA4B19A73BFF04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +94,102 @@
 		F6F82F54216207C400A9CF92 /* ARHunter */ = {
 			isa = PBXGroup;
 			children = (
+				F6FE0D9221651C1F00B7B0D8 /* art.scnassets */,
 				F6F82F55216207C400A9CF92 /* AppDelegate.swift */,
-				F6F82F57216207C400A9CF92 /* ViewController.swift */,
-				F6F82F59216207C400A9CF92 /* Main.storyboard */,
 				F6F82F5C216207C500A9CF92 /* Assets.xcassets */,
+				F6F82F672162080400A9CF92 /* MapView */,
+				F6F82F75216209B400A9CF92 /* ARView */,
+				F6F82F712162098200A9CF92 /* Helper */,
+				F6F82F59216207C400A9CF92 /* Main.storyboard */,
 				F6F82F5E216207C500A9CF92 /* LaunchScreen.storyboard */,
 				F6F82F61216207C500A9CF92 /* Info.plist */,
 			);
 			path = ARHunter;
+			sourceTree = "<group>";
+		};
+		F6F82F672162080400A9CF92 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F6C2162095200A9CF92 /* Presenter */,
+				F6F82F6B2162094D00A9CF92 /* Model */,
+				F6F82F6A2162094600A9CF92 /* View */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		F6F82F6A2162094600A9CF92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F68216208B600A9CF92 /* MapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6F82F6B2162094D00A9CF92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6FE0D9421651CFB00B7B0D8 /* ARMarker.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6F82F6C2162095200A9CF92 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F7B21620E5700A9CF92 /* MapPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F6F82F712162098200A9CF92 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F722162098C00A9CF92 /* Utils */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F6F82F722162098C00A9CF92 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F73216209A500A9CF92 /* MapKitUtils.swift */,
+				F6B0E3F82165022800B70093 /* Keys.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F6F82F75216209B400A9CF92 /* ARView */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F7621620CBC00A9CF92 /* Model */,
+				F6F82F7721620CBC00A9CF92 /* Presenter */,
+				F6F82F7821620CBC00A9CF92 /* View */,
+			);
+			path = ARView;
+			sourceTree = "<group>";
+		};
+		F6F82F7621620CBC00A9CF92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F6E2162097600A9CF92 /* ARItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6F82F7721620CBC00A9CF92 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F7D21620E6400A9CF92 /* ARPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F6F82F7821620CBC00A9CF92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6F82F7921620CCA00A9CF92 /* ARViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6F82F64216207C500A9CF92 /* Build configuration list for PBXNativeTarget "ARHunter" */;
 			buildPhases = (
+				E9A7AE79D292864124213E4F /* [CP] Check Pods Manifest.lock */,
 				F6F82F4E216207C400A9CF92 /* Sources */,
 				F6F82F4F216207C400A9CF92 /* Frameworks */,
 				F6F82F50216207C400A9CF92 /* Resources */,
+				6BD0BCCC2E48E8F88C73169F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6F82F60216207C500A9CF92 /* LaunchScreen.storyboard in Resources */,
+				F6FE0D9321651C1F00B7B0D8 /* art.scnassets in Resources */,
 				F6F82F5D216207C500A9CF92 /* Assets.xcassets in Resources */,
 				F6F82F5B216207C400A9CF92 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +261,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6BD0BCCC2E48E8F88C73169F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9A7AE79D292864124213E4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARHunter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F6F82F4E216207C400A9CF92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F82F58216207C400A9CF92 /* ViewController.swift in Sources */,
+				F6F82F702162097600A9CF92 /* ARItem.swift in Sources */,
+				F6F82F7C21620E5700A9CF92 /* MapPresenter.swift in Sources */,
+				F6F82F74216209A500A9CF92 /* MapKitUtils.swift in Sources */,
+				F6FE0D9521651CFB00B7B0D8 /* ARMarker.swift in Sources */,
+				F6F82F69216208B600A9CF92 /* MapViewController.swift in Sources */,
+				F6F82F7A21620CCA00A9CF92 /* ARViewController.swift in Sources */,
 				F6F82F56216207C400A9CF92 /* AppDelegate.swift in Sources */,
+				F6B0E3F92165022800B70093 /* Keys.swift in Sources */,
+				F6F82F7E21620E6400A9CF92 /* ARPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +459,7 @@
 		};
 		F6F82F65216207C500A9CF92 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6240ECA82C0CCC0315A80BBB /* Pods-ARHunter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +478,7 @@
 		};
 		F6F82F66216207C500A9CF92 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37A0F80E2AE2C456D37AB34B /* Pods-ARHunter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

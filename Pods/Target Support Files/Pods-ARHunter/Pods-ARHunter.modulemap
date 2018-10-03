@@ -1,0 +1,6 @@
+framework module Pods_ARHunter {
+  umbrella header "Pods-ARHunter-umbrella.h"
+
+  export *
+  module * { export * }
+}
