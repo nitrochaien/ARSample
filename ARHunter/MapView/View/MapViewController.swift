@@ -21,6 +21,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         
         addButtonShowARHunt()
@@ -34,8 +35,6 @@ class MapViewController: UIViewController {
     @objc private func goHunt() {
         if let storyboard = storyboard {
             if let controller = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
-                guard let userLocation = currentLocation else { return }
-                controller.target = ARItem(itemDescription: "dragon", location: CLLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), itemNode: nil)
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -48,10 +47,7 @@ class MapViewController: UIViewController {
             let locations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: userLocation)
             
             for location in locations {
-                let target = ARItem(itemDescription: "dragon", location: CLLocation(latitude: location.latitude, longitude: location.longitude), itemNode: nil)
-                
                 let marker = ARMarker()
-                marker.target = target
                 marker.position = location
                 marker.title = "dragon"
                 marker.snippet = "fire dragon"
@@ -63,18 +59,20 @@ class MapViewController: UIViewController {
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        locationManager.delegate = nil
-        
         guard let location: CLLocation = locations.first else { return }
-        currentLocation = location
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-        
-        mapView.camera = camera
-        setupLocations()
+
+        if location.horizontalAccuracy < 50 {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            currentLocation = location
+            
+            let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                                  longitude: location.coordinate.longitude,
+                                                  zoom: zoomLevel)
+            
+            mapView.camera = camera
+            setupLocations()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

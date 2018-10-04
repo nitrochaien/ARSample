@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		AC21972FCB978738C92495D4 /* Pods_ARHunter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */; };
+		ED535E262165B12100B97F5E /* ARConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED535E252165B12100B97F5E /* ARConfiguration.swift */; };
+		ED535E282165B5FC00B97F5E /* ARTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED535E272165B5FC00B97F5E /* ARTrackingManager.swift */; };
+		ED53997D2165C28F00EEB257 /* ARAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED53997C2165C28F00EEB257 /* ARAnnotationView.swift */; };
 		F6B0E3F92165022800B70093 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0E3F82165022800B70093 /* Keys.swift */; };
 		F6F82F56216207C400A9CF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F55216207C400A9CF92 /* AppDelegate.swift */; };
 		F6F82F5B216207C400A9CF92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F59216207C400A9CF92 /* Main.storyboard */; };
 		F6F82F5D216207C500A9CF92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F5C216207C500A9CF92 /* Assets.xcassets */; };
 		F6F82F60216207C500A9CF92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F82F5E216207C500A9CF92 /* LaunchScreen.storyboard */; };
 		F6F82F69216208B600A9CF92 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F68216208B600A9CF92 /* MapViewController.swift */; };
-		F6F82F702162097600A9CF92 /* ARItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F6E2162097600A9CF92 /* ARItem.swift */; };
+		F6F82F702162097600A9CF92 /* ARAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F6E2162097600A9CF92 /* ARAnnotation.swift */; };
 		F6F82F74216209A500A9CF92 /* MapKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F73216209A500A9CF92 /* MapKitUtils.swift */; };
 		F6F82F7A21620CCA00A9CF92 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F7921620CCA00A9CF92 /* ARViewController.swift */; };
 		F6F82F7C21620E5700A9CF92 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F82F7B21620E5700A9CF92 /* MapPresenter.swift */; };
@@ -27,6 +30,9 @@
 		37A0F80E2AE2C456D37AB34B /* Pods-ARHunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHunter.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter.release.xcconfig"; sourceTree = "<group>"; };
 		6240ECA82C0CCC0315A80BBB /* Pods-ARHunter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHunter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARHunter/Pods-ARHunter.debug.xcconfig"; sourceTree = "<group>"; };
 		D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARHunter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED535E252165B12100B97F5E /* ARConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARConfiguration.swift; sourceTree = "<group>"; };
+		ED535E272165B5FC00B97F5E /* ARTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTrackingManager.swift; sourceTree = "<group>"; };
+		ED53997C2165C28F00EEB257 /* ARAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAnnotationView.swift; sourceTree = "<group>"; };
 		F6B0E3F82165022800B70093 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F6F82F52216207C400A9CF92 /* ARHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F82F55216207C400A9CF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +41,7 @@
 		F6F82F5F216207C500A9CF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6F82F61216207C500A9CF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6F82F68216208B600A9CF92 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		F6F82F6E2162097600A9CF92 /* ARItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARItem.swift; sourceTree = "<group>"; };
+		F6F82F6E2162097600A9CF92 /* ARAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAnnotation.swift; sourceTree = "<group>"; };
 		F6F82F73216209A500A9CF92 /* MapKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitUtils.swift; sourceTree = "<group>"; };
 		F6F82F7921620CCA00A9CF92 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F6F82F7B21620E5700A9CF92 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -71,6 +77,15 @@
 				D42CC69CC42F3F1C8213EB13 /* Pods_ARHunter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED535E292165B70400B97F5E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				ED535E252165B12100B97F5E /* ARConfiguration.swift */,
+				ED535E272165B5FC00B97F5E /* ARTrackingManager.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F6F82F49216207C400A9CF92 = {
@@ -161,6 +176,7 @@
 		F6F82F75216209B400A9CF92 /* ARView */ = {
 			isa = PBXGroup;
 			children = (
+				ED535E292165B70400B97F5E /* Helper */,
 				F6F82F7621620CBC00A9CF92 /* Model */,
 				F6F82F7721620CBC00A9CF92 /* Presenter */,
 				F6F82F7821620CBC00A9CF92 /* View */,
@@ -171,7 +187,7 @@
 		F6F82F7621620CBC00A9CF92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F6F82F6E2162097600A9CF92 /* ARItem.swift */,
+				F6F82F6E2162097600A9CF92 /* ARAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F6F82F7921620CCA00A9CF92 /* ARViewController.swift */,
+				ED53997C2165C28F00EEB257 /* ARAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,14 +324,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F82F702162097600A9CF92 /* ARItem.swift in Sources */,
+				F6F82F702162097600A9CF92 /* ARAnnotation.swift in Sources */,
 				F6F82F7C21620E5700A9CF92 /* MapPresenter.swift in Sources */,
 				F6F82F74216209A500A9CF92 /* MapKitUtils.swift in Sources */,
+				ED535E262165B12100B97F5E /* ARConfiguration.swift in Sources */,
 				F6FE0D9521651CFB00B7B0D8 /* ARMarker.swift in Sources */,
 				F6F82F69216208B600A9CF92 /* MapViewController.swift in Sources */,
 				F6F82F7A21620CCA00A9CF92 /* ARViewController.swift in Sources */,
 				F6F82F56216207C400A9CF92 /* AppDelegate.swift in Sources */,
 				F6B0E3F92165022800B70093 /* Keys.swift in Sources */,
+				ED535E282165B5FC00B97F5E /* ARTrackingManager.swift in Sources */,
+				ED53997D2165C28F00EEB257 /* ARAnnotationView.swift in Sources */,
 				F6F82F7E21620E6400A9CF92 /* ARPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

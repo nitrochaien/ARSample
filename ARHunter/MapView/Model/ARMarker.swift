@@ -10,5 +10,5 @@ import UIKit
 import GoogleMaps
 
 class ARMarker: GMSMarker {
-    var target: ARItem? = nil
+    var target: ARAnnotation? = nil
 }
