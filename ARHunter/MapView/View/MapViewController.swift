@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
     var locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
+    var nodes = [LocationAnnotationNode]()
     var zoomLevel: Float = 15.0
     
     override func viewDidLoad() {
@@ -35,24 +35,28 @@ class MapViewController: UIViewController {
     @objc private func goHunt() {
         if let storyboard = storyboard {
             if let controller = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
+                controller.setData(nodes)
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
     }
     
-    private func setupLocations() {
+    private func setupLocations(_ location: CLLocation) {
         mapView.clear()
         
-        if let userLocation = currentLocation {
-            let locations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: userLocation)
+        let locations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: location)
+        
+        locations.forEach {
+            let lat = $0.latitude
+            let long = $0.longitude
+            let node = MapKitUtils.sharedInstance.buildNode(latitude: lat, longitude: long, altitude: 10, imageName: "pin")
+            nodes.append(node)
             
-            for location in locations {
-                let marker = ARMarker()
-                marker.position = location
-                marker.title = "dragon"
-                marker.snippet = "fire dragon"
-                marker.map = mapView
-            }
+            let marker = ARMarker()
+            marker.position = $0
+            marker.title = "dragon"
+            marker.snippet = "fire dragon"
+            marker.map = mapView
         }
     }
 }
@@ -61,18 +65,15 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location: CLLocation = locations.first else { return }
 
-        if location.horizontalAccuracy < 50 {
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
-            currentLocation = location
-            
-            let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                                  longitude: location.coordinate.longitude,
-                                                  zoom: zoomLevel)
-            
-            mapView.camera = camera
-            setupLocations()
-        }
+        locationManager.stopUpdatingLocation()
+        locationManager.delegate = nil
+        
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
+                                              zoom: zoomLevel)
+        
+        mapView.camera = camera
+        setupLocations(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
