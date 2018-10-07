@@ -8,5 +8,6 @@ target 'ARHunter' do
   # Pods for ARHunter
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'ARCL'
 
 end

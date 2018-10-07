@@ -13,7 +13,7 @@ class MapKitUtils: NSObject {
     static let sharedInstance = MapKitUtils()
     
     func randomCoordinatesAroundCurrentLocation(currentLocation: CLLocation, min: UInt32 = 10, max: UInt32 = 150) -> [CLLocationCoordinate2D] {
-        return (0...10).enumerated().map { _ in
+        return (0...3).enumerated().map { _ in
             return randomCoordinateAroundCurrentLocation(currentLoc: currentLocation, min: min, max: max)
         }
     }
@@ -59,12 +59,5 @@ class MapKitUtils: NSObject {
     
     func randomBetweenNumbers(first: CGFloat, second: CGFloat) -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(first - second) + min(first, second)
-    }
-    
-    func buildNode(latitude: CLLocationDegrees, longitude: CLLocationDegrees, altitude: CLLocationDistance, imageName: String) -> LocationAnnotationNode {
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let location = CLLocation(coordinate: coordinate, altitude: altitude)
-        let image = UIImage(named: imageName)!
-        return LocationAnnotationNode(location: location, image: image)
     }
 }

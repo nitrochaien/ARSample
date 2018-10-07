@@ -9,22 +9,25 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import ARCL
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
     var locationManager = CLLocationManager()
-    var nodes = [LocationAnnotationNode]()
+    var randomLocations = [CLLocationCoordinate2D]()
     var zoomLevel: Float = 15.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         addButtonShowARHunt()
+        
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
     }
     
     private func addButtonShowARHunt() {
@@ -35,7 +38,7 @@ class MapViewController: UIViewController {
     @objc private func goHunt() {
         if let storyboard = storyboard {
             if let controller = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
-                controller.setData(nodes)
+                controller.setData(locations: randomLocations)
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -44,15 +47,10 @@ class MapViewController: UIViewController {
     private func setupLocations(_ location: CLLocation) {
         mapView.clear()
         
-        let locations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: location)
+        randomLocations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: location)
         
-        locations.forEach {
-            let lat = $0.latitude
-            let long = $0.longitude
-            let node = MapKitUtils.sharedInstance.buildNode(latitude: lat, longitude: long, altitude: 10, imageName: "pin")
-            nodes.append(node)
-            
-            let marker = ARMarker()
+        randomLocations.forEach {
+            let marker = GMSMarker()
             marker.position = $0
             marker.title = "dragon"
             marker.snippet = "fire dragon"
@@ -63,10 +61,10 @@ class MapViewController: UIViewController {
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location: CLLocation = locations.first else { return }
-
-        locationManager.stopUpdatingLocation()
-        locationManager.delegate = nil
+        guard let location = locations.first else { return }
+        
+        manager.stopUpdatingLocation()
+        manager.delegate = nil
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
@@ -74,25 +72,5 @@ extension MapViewController: CLLocationManagerDelegate {
         
         mapView.camera = camera
         setupLocations(location)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted:
-            print("Location access was restricted.")
-        case .denied:
-            print("User denied access to location.")
-            // Display the map using the default location.
-            mapView.isHidden = false
-        case .notDetermined:
-            print("Location status not determined.")
-        case .authorizedAlways: fallthrough
-        case .authorizedWhenInUse:
-            print("Setup Location status authorized.")
-            locationManager.startUpdatingLocation()
-            
-            mapView.isMyLocationEnabled = true
-            mapView.settings.myLocationButton = true
-        }
     }
 }

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "31EA1E881A95056217BD998574F3A25D"
-               BuildableName = "Pods_ARHunter.framework"
-               BlueprintName = "Pods-ARHunter"
+               BlueprintIdentifier = "B3FCF2DF4512CA0461222403526A28A8"
+               BuildableName = "ARCL.framework"
+               BlueprintName = "ARCL"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "31EA1E881A95056217BD998574F3A25D"
-            BuildableName = "Pods_ARHunter.framework"
-            BlueprintName = "Pods-ARHunter"
+            BlueprintIdentifier = "B3FCF2DF4512CA0461222403526A28A8"
+            BuildableName = "ARCL.framework"
+            BlueprintName = "ARCL"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

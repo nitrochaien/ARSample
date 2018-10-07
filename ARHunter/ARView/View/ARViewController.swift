@@ -8,33 +8,43 @@
 //  https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based
 
 import UIKit
-import ARKit
-import AVFoundation
+import ARCL
+import SceneKit
 import CoreLocation
 
 class ARViewController: UIViewController {
-    @IBOutlet weak var sceneView: SceneLocationView!
+    let sceneView = SceneLocationView()
+
+    var locations = [CLLocationCoordinate2D]()
     
-    var centerMapOnUserLocation: Bool = true
-    var adjustNorthByTappingSidesOfScreen = false
-    var demoData = [LocationAnnotationNode]()
-    
-    private var userLocation: CLLocation?
+    var updateUserLocationTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sceneView.autoenablesDefaultLighting = true
-        sceneView.automaticallyUpdatesLighting = true
+        view.addSubview(sceneView)
         
         sceneView.locationDelegate = self
+        
         addTapGestureToRemoveSceneView()
         
-        updateUserLocation()
+        updateUserLocationTimer?.invalidate()
+        updateUserLocationTimer = Timer.scheduledTimer(
+            timeInterval: 0.5,
+            target: self,
+            selector: #selector(updateUserLocation),
+            userInfo: nil,
+            repeats: true)
     }
     
-    func setData(_ data: [LocationAnnotationNode]) {
-        self.demoData = data
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        sceneView.frame = view.bounds
+    }
+
+    
+    func setData(locations: [CLLocationCoordinate2D]) {
+        self.locations = locations
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,42 +59,30 @@ class ARViewController: UIViewController {
         print("pause")
         // Pause the view's session
         sceneView.pause()
+        updateUserLocationTimer?.invalidate()
+        updateUserLocationTimer = nil
     }
     
-    private func updateUserLocation() {
-        guard let currentLocation = sceneView.currentLocation() else { return }
-        
-        demoData.forEach { sceneView.addLocationNodeWithConfirmedLocation(locationNode: $0) }
-        
-        if let bestEstimate = self.sceneView.bestLocationEstimate(),
-            let position = self.sceneView.currentScenePosition() {
-            print("")
-            print("Fetch current location")
-            print("best location estimate, position: \(bestEstimate.position), location: \(bestEstimate.location.coordinate), accuracy: \(bestEstimate.location.horizontalAccuracy), date: \(bestEstimate.location.timestamp)")
-            print("current position: \(position)")
-            
-            let translation = bestEstimate.translatedLocation(to: position)
-            
-            print("translation: \(translation)")
-            print("translated location: \(currentLocation)")
-            print("")
+    @objc private func updateUserLocation() {
+        generateDemoData().forEach { sceneView.addLocationNodeWithConfirmedLocation(locationNode: $0) }
+    }
+    
+    private func generateDemoData() -> [LocationAnnotationNode] {
+        var nodes = [LocationAnnotationNode]()
+        locations.forEach {
+            let lat = $0.latitude
+            let long = $0.longitude
+            let node = buildNode(latitude: lat, longitude: long, altitude: 10, imageName: "pin")
+            nodes.append(node)
         }
+        return nodes
     }
     
-    private func addBox(x: Float = 0, y: Float = 0, z: Float = -0.2) {
-        //Create a box shape. (1 float = 1 meter)
-        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-        
-        //A node represent position and coordinates of an object in 3D space
-        let boxNode = SCNNode()
-        //Give node a shape by setting geometry to the box
-        boxNode.geometry = box
-        //Give our node a position. This position is relative to the camera. Positive x is to the right. Negative x is to the left. Positive y is up. Negative y is down. Positive z is backward. Negative z is forward.
-        boxNode.position = SCNVector3(x, y, z)
-        
-        let scene = SCNScene()
-        scene.rootNode.addChildNode(boxNode)
-        sceneView.scene = scene
+    private func buildNode(latitude: CLLocationDegrees, longitude: CLLocationDegrees, altitude: CLLocationDistance, imageName: String) -> LocationAnnotationNode {
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let location = CLLocation(coordinate: coordinate, altitude: altitude)
+        let image = UIImage(named: imageName)!
+        return LocationAnnotationNode(location: location, image: image)
     }
     
     private func addTapGestureToRemoveSceneView() {
@@ -97,8 +95,6 @@ class ARViewController: UIViewController {
         let hitTestResults = sceneView.hitTest(tapLocation, options: nil)
         
         if let node = hitTestResults.first?.node {
-            print("Touch node!! Node: \(node.description)")
-//            node.removeFromParentNode()
         }
     }
 }
@@ -113,6 +109,7 @@ extension ARViewController: SceneLocationViewDelegate {
     }
     
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
+        
     }
     
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode) {
