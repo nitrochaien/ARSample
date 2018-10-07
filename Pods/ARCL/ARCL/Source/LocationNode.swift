@@ -10,10 +10,6 @@ import Foundation
 import SceneKit
 import CoreLocation
 
-public protocol LocationNodeDelegate: AnyObject {
-    func onTap(_ node: LocationNode)
-}
-
 ///A location node can be added to a scene using a coordinate.
 ///Its scale and position should not be adjusted, as these are used for scene layout purposes
 ///To adjust the scale and position of items within a node, you can add them to a child node and adjust them there
@@ -46,28 +42,15 @@ open class LocationNode: SCNNode {
     ///This should only be set to false if you plan to manually update position and scale
     ///at regular intervals. You can do this with `SceneLocationView`'s `updatePositionOfLocationNode`.
     public var continuallyUpdatePositionAndScale = true
-    
-    public weak var delegate: LocationNodeDelegate?
 
     public init(location: CLLocation?) {
         self.location = location
         self.locationConfirmed = location != nil
         super.init()
-        
-        addTap()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    public func addTap() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapNode))
-        self..addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    @objc private func onTapNode() {
-        delegate?.onTap(self)
     }
 }
 

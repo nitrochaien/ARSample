@@ -95,6 +95,7 @@ class ARViewController: UIViewController {
         let hitTestResults = sceneView.hitTest(tapLocation, options: nil)
         
         if let node = hitTestResults.first?.node {
+            
         }
     }
 }
