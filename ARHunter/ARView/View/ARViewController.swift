@@ -10,6 +10,7 @@
 import UIKit
 import ARCL
 import CoreLocation
+import ARKit
 
 class ARViewController: UIViewController {
     private let sceneView = SceneLocationView()
@@ -59,13 +60,29 @@ class ARViewController: UIViewController {
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc private func tapToSceneView(_ recognizer: UITapGestureRecognizer) {
+//    @objc private func tapToSceneView(_ recognizer: UITapGestureRecognizer) {
 //        let tapLocation = recognizer.location(in: sceneView)
 //        let hitTestResults = sceneView.hitTest(tapLocation, options: nil)
 //
-//        if let node = hitTestResults.first?.node {
-//
+//        for hit in hitTestResults {
+//            print("node: \(hit.node.name)")
 //        }
+//    }
+    
+    @objc func tapToSceneView(tapRecognizer: UITapGestureRecognizer) {
+        if tapRecognizer.state == .ended {
+            let hits = sceneView.hitTest(tapRecognizer.location(in: tapRecognizer.view), options: nil) as [SCNHitTestResult]
+            if let node = hits.first?.node.parent as? LocationNode {
+                sceneView.removeLocationNode(locationNode: node)
+                for i in 0...presenter.locations.count - 1 {
+                    let location = presenter.locations[i]
+                    if location.latitude == node.location.coordinate.latitude {
+                        presenter.locations.remove(at: i)
+                        break
+                    }
+                }
+            }
+        }
     }
 }
 
