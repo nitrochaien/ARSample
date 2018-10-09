@@ -14,20 +14,23 @@ import ARCL
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
-    var locationManager = CLLocationManager()
-    var randomLocations = [CLLocationCoordinate2D]()
-    var zoomLevel: Float = 15.0
+    private let presenter = MapPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
+        presenter.attachView(self)
+        presenter.setupLocationManager()
         
         addButtonShowARHunt()
         
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+    }
+    
+    deinit {
+        print("Deinit MapViewController")
+        presenter.detachView()
     }
     
     private func addButtonShowARHunt() {
@@ -38,7 +41,7 @@ class MapViewController: UIViewController {
     @objc private func goHunt() {
         if let storyboard = storyboard {
             if let controller = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
-                controller.setData(locations: randomLocations)
+                controller.setData(locations: presenter.randomLocations)
                 navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -47,9 +50,9 @@ class MapViewController: UIViewController {
     private func setupLocations(_ location: CLLocation) {
         mapView.clear()
         
-        randomLocations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: location)
+        presenter.randomLocations = MapKitUtils.sharedInstance.randomCoordinatesAroundCurrentLocation(currentLocation: location)
         
-        randomLocations.forEach {
+        presenter.randomLocations.forEach {
             let marker = GMSMarker()
             marker.position = $0
             marker.title = "dragon"
@@ -59,17 +62,8 @@ class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        
-        manager.stopUpdatingLocation()
-        manager.delegate = nil
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-        
+extension MapViewController: MapPresenterDelegate {
+    func updateMap(with location: CLLocation, and camera: GMSCameraPosition) {
         mapView.camera = camera
         setupLocations(location)
     }

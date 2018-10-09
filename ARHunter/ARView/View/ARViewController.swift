@@ -47,6 +47,10 @@ class ARViewController: UIViewController {
         print("pause")
         // Pause the view's session
         sceneView.pause()
+    }
+    
+    deinit {
+        print("Deinit ARViewController")
         presenter.detachView()
     }
     
