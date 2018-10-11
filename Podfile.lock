@@ -1,5 +1,4 @@
 PODS:
-  - ARCL (1.0.4)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -9,21 +8,18 @@ PODS:
     - GoogleMaps/Base (= 2.7.0)
 
 DEPENDENCIES:
-  - ARCL
   - GoogleMaps
   - GooglePlaces
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - ARCL
     - GoogleMaps
     - GooglePlaces
 
 SPEC CHECKSUMS:
-  ARCL: 5fd2b0d7aabf91f15dbc0e8c510b25516b8a755a
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
 
-PODFILE CHECKSUM: f545090fb30a90d43b5785ac01bd3b7553e180cb
+PODFILE CHECKSUM: 48b5e24fdccbe1d2cfc78e60018625a088ae97e9
 
 COCOAPODS: 1.5.3

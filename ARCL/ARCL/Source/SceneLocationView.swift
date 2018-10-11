@@ -194,7 +194,6 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         if let position = currentScenePosition() {
             let sceneLocationEstimate = SceneLocationEstimate(location: location, position: position)
             self.sceneLocationEstimates.append(sceneLocationEstimate)
-
             locationDelegate?.sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: self, position: position, location: location)
         }
     }
@@ -283,8 +282,10 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         }
 
         updatePositionAndScaleOfLocationNode(locationNode: locationNode, initialSetup: true, animated: false)
-
+        
+        print("Add location node")
         locationNodes.append(locationNode)
+        print("count: \(locationNodes.count)")
         sceneNode?.addChildNode(locationNode)
     }
 

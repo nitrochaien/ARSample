@@ -8,7 +8,6 @@
 //  https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based
 
 import UIKit
-import ARCL
 import CoreLocation
 import ARKit
 
@@ -59,15 +58,6 @@ class ARViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToSceneView))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
-    
-//    @objc private func tapToSceneView(_ recognizer: UITapGestureRecognizer) {
-//        let tapLocation = recognizer.location(in: sceneView)
-//        let hitTestResults = sceneView.hitTest(tapLocation, options: nil)
-//
-//        for hit in hitTestResults {
-//            print("node: \(hit.node.name)")
-//        }
-//    }
     
     @objc func tapToSceneView(tapRecognizer: UITapGestureRecognizer) {
         if tapRecognizer.state == .ended {

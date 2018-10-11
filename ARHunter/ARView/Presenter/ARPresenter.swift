@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ARCL
 import CoreLocation
 import SceneKit
 
@@ -23,23 +22,14 @@ class ARPresenter: NSObject {
     
     func attachView(_ delegate: ARPresenterDelegate) {
         self.delegate = delegate
-        
-        updateUserLocationTimer?.invalidate()
-        updateUserLocationTimer = Timer.scheduledTimer(
-            timeInterval: 0.5,
-            target: self,
-            selector: #selector(updateUserLocation),
-            userInfo: nil,
-            repeats: true)
+        updateUserLocation()
     }
     
     func detachView() {
         delegate = nil
-        updateUserLocationTimer?.invalidate()
-        updateUserLocationTimer = nil
     }
     
-    @objc private func updateUserLocation() {
+    private func updateUserLocation() {
         let data = generateDemoData()
         delegate?.didGenerateNodes(data)
     }

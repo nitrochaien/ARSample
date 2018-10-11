@@ -9,7 +9,6 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-import ARCL
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ARCL
 import GoogleMaps
 
 protocol MapPresenterDelegate: NSObjectProtocol {
