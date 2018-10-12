@@ -63,14 +63,27 @@ class ARViewController: UIViewController {
         if tapRecognizer.state == .ended {
             let hits = sceneView.hitTest(tapRecognizer.location(in: tapRecognizer.view), options: nil) as [SCNHitTestResult]
             if let node = hits.first?.node.parent as? LocationNode {
-                sceneView.removeLocationNode(locationNode: node)
-                for i in 0...presenter.locations.count - 1 {
-                    let location = presenter.locations[i]
-                    if location.latitude == node.location.coordinate.latitude {
-                        presenter.locations.remove(at: i)
-                        break
-                    }
-                }
+                let moveUp = SCNAction.moveBy(x: 0, y: 1, z: 0, duration: 1)
+                moveUp.timingMode = .easeInEaseOut
+                let moveDown = SCNAction.moveBy(x: 0, y: -1, z: 0, duration: 1)
+                moveDown.timingMode = .easeInEaseOut
+                let moveSequence = SCNAction.sequence([moveUp,moveDown])
+                let moveLoop = SCNAction.repeatForever(moveSequence)
+                node.runAction(moveLoop)
+                
+//                remove(node: node)
+            }
+        }
+    }
+    
+    private func remove(node: LocationNode) {
+        sceneView.removeLocationNode(locationNode: node)
+        
+        for i in 0...presenter.locations.count - 1 {
+            let location = presenter.locations[i]
+            if location.latitude == node.location.coordinate.latitude {
+                presenter.locations.remove(at: i)
+                break
             }
         }
     }
